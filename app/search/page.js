@@ -7,25 +7,34 @@ import Link from "next/link";
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
-  const query = searchParams.get("query");
+  const query = searchParams.get("query") || ""; // default to empty string
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchProducts() {
+    if (!query) return;
+
+    const fetchProducts = async () => {
       setLoading(true);
-      const res = await fetch("https://fakestoreapi.com/products");
-      const data = await res.json();
+      try {
+        const res = await fetch("https://fakestoreapi.com/products");
+        const data = await res.json();
 
-      const filtered = data.filter(p =>
-        p.title.toLowerCase().includes(query?.toLowerCase())
-      );
-      setProducts(filtered);
-      setLoading(false);
-    }
+        const filtered = data.filter((p) =>
+          p.title.toLowerCase().includes(query.toLowerCase())
+        );
+        setProducts(filtered);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    if (query) fetchProducts();
+    fetchProducts();
   }, [query]);
+
+  if (!query) return <p className="text-center mt-5">Enter a search query.</p>;
 
   if (loading)
     return (
@@ -41,7 +50,7 @@ export default function SearchPage() {
         <p>No products found.</p>
       ) : (
         <Row className="mt-4">
-          {products.map(p => (
+          {products.map((p) => (
             <Col key={p.id} md={3} className="mb-4">
               <Card>
                 <Card.Img
@@ -51,8 +60,10 @@ export default function SearchPage() {
                 <Card.Body>
                   <Card.Title>{p.title}</Card.Title>
                   <Card.Text>₹ {p.price}</Card.Text>
-                  <Link href={`/products/${p.id}`}>
-                    <Button variant="primary" className="w-100">View Details</Button>
+                  <Link href={`/products/${p.id}`} passHref>
+                    <Button variant="primary" className="w-100">
+                      View Details
+                    </Button>
                   </Link>
                 </Card.Body>
               </Card>
