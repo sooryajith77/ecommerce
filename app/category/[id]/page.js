@@ -74,7 +74,7 @@ export default function CategoryPage() {
     "home-appliance": "home-decoration",
     vegetables: "groceries",
     meat: "groceries",
-    "skin-care": "skincare", // must match CategoryList id
+    "skin-care": "beauty", // must match CategoryList id
     home: "home-decoration",
     furniture: "furniture",
   };
