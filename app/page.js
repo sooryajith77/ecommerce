@@ -28,7 +28,7 @@ export default function HomePage() {
     {
       id: 2,
       image:
-        "https://t4.ftcdn.net/jpg/04/86/72/71/360_F_486727138_LIbtjQYhz2nwYFoziXPeUIFSpdz5tiHZ.jpg",
+        "https://static.vecteezy.com/system/resources/thumbnails/011/871/820/small/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg",
       title: "100% Cotton Men Black Suits",
     },
     {
@@ -47,7 +47,7 @@ export default function HomePage() {
     { id: 5, src: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?fm=jpg&q=60&w=3000", title: "Headphones", price: 499 },
     { id: 6, src: "https://welpix.com/wp-content/uploads/2024/06/A-guide-to-skincare-product-photography.webp", title: "Sun cream", price: 499 },
     { id: 7, src: "https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg", title: "Earpodes", price: 499 },
-    { id: 8, src: "https://www.jiomart.com/images/product/original/rv1cezadcf/jiebo-uv-protection-riding-square-silver-sunglasses.jpg", title: "Sun glass", price: 499 },
+    { id: 8, src:"https://media.wired.com/photos/67f09f5e6a1710031731488f/4:3/w_640%2Cc_limit/Best-Sunglasses_Roka-Oslo-2.0_Photo-Source-Boutayna-Chokrane.jpg", title: "Sun glass", price: 499 },
   ];
 
   return (
